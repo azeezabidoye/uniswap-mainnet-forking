@@ -24,8 +24,8 @@ const main = async () => {
   await helpers.impersonateAccount(USDCHolder);
   const impersonatedSigner = await ethers.getSigner(USDCHolder);
 
-  const amountUSDC = ethers.parseUnits("10000", 6); // amount-in
-  const amountDAIMin = ethers.parseUnits("9900", 18); // AmountOutMin
+  const amountUSDC = ethers.parseUnits("10000", 6); // amount-in ->token to be swapped
+  const amountDAIMin = ethers.parseUnits("9900", 18); // AmountOutMin -> expected output in another token
   const deadline = Math.floor(Date.now() / 1000) + 60 * 10; // 10 Minutes
 
   // Declaring contract instance of USDC token
@@ -60,7 +60,7 @@ const main = async () => {
   const daiBalBefore = await DAI.balanceOf(impersonatedSigner.address);
 
   console.log(
-    "=================Before Swap===================================",
+    "=========================Before Swap===========================",
   );
   console.log("USDC Balance before swapping:", Number(usdcBalBefore));
   const transaction = await ROUTER.swapExactTokensForTokens(
@@ -78,7 +78,7 @@ const main = async () => {
   const usdcBalAfter = await USDC.balanceOf(impersonatedSigner.address);
   const daiBalAfter = await DAI.balanceOf(impersonatedSigner.address);
 
-  console.log("=================After========================================");
+  console.log("=======================After Swap===========================");
   console.log("USDC Balance after swapping:", Number(usdcBalAfter));
   console.log("DAI Balance after swapping:", Number(daiBalAfter));
 

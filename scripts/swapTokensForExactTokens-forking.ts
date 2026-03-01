@@ -59,7 +59,7 @@ const main = async () => {
   const daiBalBefore = await DAI.balanceOf(impersonatedSigner.address);
 
   console.log(
-    "=================Before Swap===================================",
+    "=========================BEFORE SWAP===========================",
   );
   console.log("USDC Balance before swapping:", Number(usdcBalBefore));
 
@@ -87,6 +87,16 @@ const main = async () => {
 
   console.log("Token Swapped successfully!");
   console.log("=========================================================");
+
+  // Calculates the difference btw the Balances...
+  const usdcUsed = usdcBalBefore - usdcBalAfter;
+  const daiUsed = daiBalAfter - daiBalBefore;
+  const amountReversed = amountInMax - usdcUsed;
+
+  // Logs the diff-in-Balance and uses formatUnits() method to convert Wei to actual value
+  console.log("USDC USED:", ethers.formatUnits(usdcUsed, 6));
+  console.log("DAI USED:", ethers.formatUnits(daiUsed, 18));
+  console.log("AMOUNT REVERSED:", ethers.formatUnits(amountReversed, 6));
 };
 
 main().catch((error) => {

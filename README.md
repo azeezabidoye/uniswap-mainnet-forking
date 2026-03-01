@@ -1,13 +1,10 @@
-# Sample Hardhat Project
+# UniSwap Mainnet Forking
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+### Scipted Functions
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
-```
+1. addLiquidity-forking ✅
+2. swapETHForExactTokens-forking ✅
+3. swapExactTokensForTokens-forking ✅
+   ![swapExactTokensForTokens-forking Result](./script-result-img/swapExactTokensForTokens.png)
+   4.swapTokensForExactTokens-forking ✅
+   ![swapTokensForExactTokens-forking Result](./script-result-img/swapTokensForExactTokens.png)
